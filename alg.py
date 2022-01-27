@@ -24,6 +24,10 @@ if ib[0] != 0:
     sub(ib, ia, 0)
     
 if ib[1] != 1:
+    if ib[1] == 0:
+        if ic[1] != 0:
+            ib, ic = ic, ib
+            
     div(ib, 1)
  
 if ic[0] != 0:
