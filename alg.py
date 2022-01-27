@@ -1,61 +1,41 @@
-def forInput():
-  ic = [[],[],[]]
-  for i in range(0,3):
-    for j in range (0,4):
-        print('Digite o valor da coluna:', j, ' linha:',i)
-        ic[i].append(int(input()))
-  return ic
-  
-ic = [[1,1,-1,0], [0,3.5,3.4,0], [3.4,-3.5,0,4.2]]
+def div(ix, x):
+    const = ix[x]
+    for i in range(0, len(ix)):
+        ix[i] = ix[i]/const
 
-if ic[1][0] != 0:
-  if ic[0][0] != 0:
-    turnZero = ic[0]
-  elif ic[2][0] != 0:
-    turnZero = ic[2]
-  
-  if (turnZero[0] != 1):
-    turnZerofirst = turnZero[0]
-    for i in range(0, len(turnZero)):
-      turnZero[i] = turnZero[i]/turnZerofirst
-  
-  for i in range(0, len(turnZero)):
-    ic[1][i] = ic[1][i] - turnZero[i]*ic[1][0]
-if ic[1][1] != 1:
-  i = 0
-  value = ic[1][1]
-  for element in ic[1]:
-    ic[1][i] = float(round(element/value, 2))
-    print(ic[1][i])
-    i += 1
+def sub(ix, iy, x):
+    const = ix[x]
+    for i in range(0, len(ix)):
+        ix[i] = ix[i] - iy[i]*const
+        
+ib = [1,1,-1,0]
+ia = [0,3.5,3.4,0]
+ic = [3.4,-3.5,0,4.2]
 
-if ic[2][0] != 0:
-  if ic[0][0] != 0:
-    turnZero = ic[0]
-  elif ic[1][0] != 0:
-    turnZero = ic[1]
-  
-  if (turnZero[0] != 1):
-    turnZerofirst = turnZero[0]
-    for i in range(0, len(turnZero)):
-      turnZero[i] = turnZero[i]/turnZerofirst
-  
-  for i in range(0, len(turnZero)):
-    ic[2][i] = ic[2][i] - turnZero[i]*ic[2][0]
+if ia[0] != 1:
+    if ia[0] == 0:
+        if ib[0] != 0:
+            ia, ib = ib, ia
+        elif ic[0] != 0:
+            ia, ic = ic, ia
+    div(ia, 0)
+
+if ib[0] != 0:
+    sub(ib, ia, 0)
     
-if ((ic[2][0] == 0 and ic[2][2] == 0) or (ic[2][1]==0 and ic[2][0] == 0)):
-  print(ic)
+if ib[1] != 1:
+    div(ib, 1)
+ 
+if ic[0] != 0:
+    sub(ic, ia, 0)
 
-elif ic[2][1] != 0:
-  turnZero = ic[1]
-  for i in range(0, len(turnZero)):
-    ic[2][i] = ic[2][i] - turnZero[i]*ic[2][1]
+if ic[1] != 0:
+    sub(ic, ib, 1)
 
-
-  if ic[2][2] != 1:
-    i = 0
-    value = ic[2][2]
-    for element in ic[2]:
-      ic[2][i] = float(round(element/value, 2))
-      print(ic[2][i])
-      i += 1
+if ic[2] != 1:
+    div(ic, 2)
+    
+ic = float(round(ic[3], 2))
+ib = float(round((ib[3] - ib[2]*ic),2))
+ia = float(round((ia[3] - (ia[1]*ib + ia[2]*ic)), 2))
+print(ia, ib, ic)
