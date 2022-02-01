@@ -7,39 +7,54 @@ def sub(ix, iy, x):
     const = ix[x]
     for i in range(0, len(ix)):
         ix[i] = ix[i] - iy[i]*const
-        
-ib = [1,1,-1,0]
-ia = [0,3.5,3.4,0]
-ic = [3.4,-3.5,0,4.2]
 
-if ia[0] != 1:
-    if ia[0] == 0:
-        if ib[0] != 0:
-            ia, ib = ib, ia
-        elif ic[0] != 0:
-            ia, ic = ic, ia
-    div(ia, 0)
 
-if ib[0] != 0:
-    sub(ib, ia, 0)
+
+la = [0,3.5,3.4,0]
+lb = [1,1,-1,0]
+lc = [3.4,-3.5,0,4.2]
+ld = [3.4,-3.5,0,4.2]
+
+if la[0] != 1:
+    if la[0] == 0:
+        if lb[0] != 0:
+            la, lb = lb, la
+        elif lc[0] != 0:
+            la, lc = lc, la
+    div(la, 0)
+
+if lb[0] != 0:
+    sub(lb, la, 0)
     
-if ib[1] != 1:
-    if ib[1] == 0:
-        if ic[1] != 0:
-            ib, ic = ic, ib
+if lb[1] != 1:
+    if lb[1] == 0:
+        if lc[1] != 0:
+            lb, lc = lc, lb
             
-    div(ib, 1)
+    div(lb, 1)
  
-if ic[0] != 0:
-    sub(ic, ia, 0)
+if lc[0] != 0:
+    sub(lc, la, 0)
 
-if ic[1] != 0:
-    sub(ic, ib, 1)
+if lc[1] != 0:
+    sub(lc, lb, 1)
 
-if ic[2] != 1:
-    div(ic, 2)
-    
-ic = float(round(ic[3], 2))
-ib = float(round((ib[3] - ib[2]*ic),2))
-ia = float(round((ia[3] - (ia[1]*ib + ia[2]*ic)), 2))
-print(ia, ib, ic)
+if lc[2] != 1:
+    div(lc, 2)
+
+if ld[0] != 0:
+    sub(ld, la, 0)
+
+if ld[1] != 0:
+    sub(ld, lb, 1)
+
+if ld[2] != 0:
+    sub(ld, lc, 2)
+
+if ld[3] != 1:
+    div(lc, 3) 
+
+ic = float(round(lc[3], 2))
+ib = float(round((lb[3] - lb[2]*ic),2))
+ia = float(round((la[3] - (la[1]*ib + la[2]*ic)), 2))
+print(la, lb, lc, ld)
