@@ -88,9 +88,9 @@ def findCurrent(la,lb,lc,ld):
         ia = float(round((la[3] - (la[1]*ib + la[2]*ic)), 2))
         idd = 'a'
     else:
-        idd = ldd[4]
+        idd = ld[4]
         ic = float(round(lc[4] - lc[3]*idd,2))
-        ib = float(round(ib[4] - (lb[3]*idd + lb[2]*ic),2))
+        ib = float(round(lb[4] - (lb[3]*idd + lb[2]*ic),2))
         ia = float(round(lb[4] - (lb[3]*idd + lb[2]*ic + lb[1]*ib),2)) 
 
     if ic == 'a' and idd == 'a':
